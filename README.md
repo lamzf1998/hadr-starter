@@ -2,6 +2,42 @@
 
 A monitoring agent for humanitarian assistance and disaster response (HADR).
 
+## What HADR is
+
+**Humanitarian Assistance and Disaster Response** is the work of getting help to
+people after a disaster — earthquakes, cyclones, floods, volcanoes, drought,
+wildfires — and the coordination that surrounds it. The people doing that work
+face the same problem every morning: dozens of disaster alerts fire overnight,
+most are noise (a magnitude-3 tremor no one felt, a duplicate of yesterday's
+quake arriving from a second agency), and the few that matter are buried among
+them.
+
+This agent exists to answer one question before anyone has had their coffee:
+**what happened overnight that a human needs to know about, and how bad is it?**
+It watches the live feeds, discards the noise, assesses what remains — what
+happened, where, how bad, who is affected — and publishes a single situation
+report each morning. When nothing has changed, it stays quiet.
+
+## The feeds
+
+Three public feeds, each with a different temperament (details and endpoints in
+`feeds/`):
+
+- **GDACS** — the EU/UN Global Disaster Alert and Coordination System.
+  Multi-hazard and fast, with a colour-coded alert level (green/orange/red) on
+  every event. Broad but noisy.
+- **USGS** — the US Geological Survey earthquake feed. Earthquakes only,
+  regenerated every minute, authoritative on magnitude and location — but events
+  get revised, and occasionally deleted, after they are first published.
+- **ReliefWeb** — UN OCHA's curated humanitarian service. Slower and
+  human-vetted: a disaster appears here only once people decide it matters. The
+  signal is high; the latency is measured in days.
+
+The hard part is not reading any one feed — it is that the same physical
+earthquake can arrive from all three under three different identifiers, at three
+different times, with three different descriptions. Deciding when two records are
+the same event is where most of the judgement lives.
+
 ## The end state
 
 By Wednesday afternoon this repository contains an agent that:
