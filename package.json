@@ -1,0 +1,12 @@
+{
+  "name": "hadr-monitor",
+  "version": "0.1.0",
+  "description": "Overnight disaster triage. Slice 1: USGS earthquakes end-to-end into dashboard.html.",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "report": "node src/main.js",
+    "start": "node src/main.js"
+  },
+  "license": "MIT"
+}
